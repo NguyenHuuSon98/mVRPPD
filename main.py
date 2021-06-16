@@ -109,14 +109,6 @@ def main():
         reader = csv.reader(f)
         rule_str = list(reader)
 
-    # costMatrix = np.genfromtxt('../data_02_17032021 (1)/data_02_17032021/matrix_cost.csv', delimiter=',')
-    # maxCapRoadMatrix = np.genfromtxt('../data_02_17032021 (1)/data_02_17032021/max_tonnage.csv', delimiter=',')
-    # demand = np.genfromtxt('../data_02_17032021 (1)/data_02_17032021/demand.csv', delimiter=',')
-    # vehicle = np.genfromtxt('../data_02_17032021 (1)/data_02_17032021/vehicle.csv', delimiter=',')
-    # with open('../data_02_17032021 (1)/data_02_17032021/rule.csv', newline='') as f:
-    #     reader = csv.reader(f)
-    #     rule_str = list(reader)
-
     startime = time.time()
     eps = 18000
     minSample = 3
@@ -140,7 +132,7 @@ def main():
             # calculate cost matrix for rule
             costMatrixOfRule = calCostMatrixForRule(costMatrix, v)
             # routing (time run tabu search is lenght of rule)
-            routing_rule = TSP.find_way(costMatrixOfRule, len(v))[0]
+            routing_rule = TSP.find_way(costMatrixOfRule, len(v)/2)[0]
             # update index for rule and update routed rule
             rule.append(list(np.array(v)[routing_rule]))
         else:
